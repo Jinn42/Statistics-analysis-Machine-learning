@@ -63,7 +63,7 @@ Wb$X2
 
 
 getwd()
-setwd('C:/Users/Lisa/Datasets_ASML')
+setwd('/Users/jinli/Desktop/学习资料/ASML/data')
 dir()
 
 Y1 = read.table('Y1.txt')
