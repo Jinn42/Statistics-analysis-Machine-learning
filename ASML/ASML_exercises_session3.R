@@ -105,7 +105,7 @@ cor(A3)
 Y4 = read.table('Y4.txt')
 head(Y4)
 A4 = read.table('A4.txt')
-head
+head(A4)
 dim(A4)
 Y4 = as.matrix(Y4)
 L4 = lm(Y4~.,data=A4)
