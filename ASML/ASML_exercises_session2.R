@@ -28,7 +28,7 @@ A[,1] = rexp(50, 0.4)
 A[,2] = rnorm(50, 3, 0.5)
 A[,3] = rpois(50, 0.8)
 A[,4] = runif(50, -5, 3)
-A[,5:58]=matrix(rnorm(44*50), ncol=44)
+A[,5:50]=matrix(rnorm(46*50), ncol=46)
 
 Y = 3+2*A[,1]-5*A[,2]+7*A[,4]+rnorm(50)
 
