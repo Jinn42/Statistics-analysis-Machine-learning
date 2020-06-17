@@ -18,7 +18,7 @@ plot(fit2)
 print(fit2)
 
 help(cv.glmnet)
-fit2cv = glmnet(x,y)
+fit2cv = cv.glmnet(x,y)
 plot(fit2cv)
 names(fit2cv)
 
