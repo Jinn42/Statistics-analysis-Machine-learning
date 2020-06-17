@@ -69,7 +69,7 @@ n1 = sum(Xf=='A')
 muhat = 1/n1*sum(Y*(Xf=='A'))
 mod
 n2 = sum(Xf=='B')
-1/n2*sum(Y*(Xf=='B'))-muhat
+muhat2=1/n2*sum(Y*(Xf=='B'))-muhat
 summary(mod)
 anova(mod)
 
