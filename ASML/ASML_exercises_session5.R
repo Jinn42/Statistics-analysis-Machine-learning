@@ -1,7 +1,7 @@
 #ASML - session 5___________________________________________________________________________________________
 
 getwd()
-setwd('C:/Users/Lisa/Datasets_ASML')
+setwd('/Users/jinli/Desktop/学习资料/ASML/data')
 dir()
 
 ozone <- read.table('ozone.txt', header=TRUE)
