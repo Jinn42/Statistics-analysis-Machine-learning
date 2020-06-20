@@ -1,0 +1,76 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+A <- read.table('/Users/jinli/Desktop/学习资料/ASML/data/exercise4.txt', header=TRUE)
+A
+```
+
+```{r}
+#(a) i:how to see if there is an influence of the team on the number
+attach(A)
+number
+summary(A[,c("number","team")])
+plot(number~team,data=A,pch=15,cex=0.5,col='green')
+model <- aov(number~team)
+model
+summary(model)
+#Answer: According to the p-value(0.805) which is bigger than 0.05,the performance are not significantly different with respect to the team 
+```
+```{r}
+#(a) ii:how to see if there is an influence of the station on the number
+attach(A)
+number
+summary(A[,c("number","Station")])
+plot(number~Station,data=A,pch=15,cex=0.5,col='green')
+model2 <- aov(number~Station)
+model2
+summary(model2)
+#Answer: According to the p-value(0.000314) which is much less than 0.05, we can say that the difficulties associated to each work stattion are not the same
+```
+
+
+
+
+
+```{r}
+#(b)iii,Is the variable team influent, iv,Is the variable work station influent?
+Y=A[,3]
+#X1=station;X2=team
+X1=A[,1]
+X2=A[,2]
+X1
+X2
+
+```
+```{r}
+modeltest <- lm(Y~X1:X2)
+summary(modeltest)
+anova(modeltest)
+```
+
+```{r}
+model3 <- lm(Y~X1+X2)
+model3
+summary(model3)
+anova(model3)
+#Answer:(iii) No,the p-values of all team variables are bigger than 0.05.
+#(iv) Yes,p-values of station C and station D are less than 0.05
+```
+
+
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+

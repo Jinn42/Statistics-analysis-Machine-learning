@@ -1,0 +1,66 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+A = matrix(0, ncol=2, nrow=11)
+rownames(A) = c('Switzerland', 'France','Sweden','United States','Russia','China','India','Brazil','Peru','Algeria','Zaire')
+
+A[,1] <- c(4, 5.7, 4.9, 3, 14.8, 69.6, 63.8, 26.2, 38.3, 24.7, 65.7)
+A[,2] <- c(3432, 3273, 3049, 3642, 3394, 2628, 2204, 2643, 2192, 2687, 2159)
+colnames(A) <- c('%ariculture_population','calories_per_day_per_person')
+A
+dim(A)
+#(a)make a drawing of those observations
+plot(A)
+```
+```{r}
+#(b)Estimate the parameters of the model
+X=A[,1]
+Y=A[,2]
+L = lm(Y~X)
+summary(L)
+L
+#answer: B0=3346.122,B1=-17.164,Residual standard error: 312.8
+```
+
+
+
+
+
+```{r}
+#(d)construct confidence interval at 95% for the regression curve for a point X0(suppose X0=20)
+new = data.frame(X=20)
+predict(L,new)
+```
+
+
+
+```{r}
+#(e)draw the points, the regression curve(red) and the curves associated to the confidence interval(black) on the same graphic
+
+new = data.frame(X=seq(0,70,0.1))
+pred.w.clim <- predict(L, new, interval="confidence")
+plot(A)
+abline(L,col='red')
+matlines(new$X, pred.w.clim,
+        lty = c(1,2,2), type = "l", ylab = "predicted y")
+```
+
+
+
+
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
